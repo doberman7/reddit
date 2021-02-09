@@ -1,7 +1,21 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-
+import {
+  Row,
+  Col,
+  Typography,
+  Card,
+  Button,
+  // Modal,
+  Divider,
+  Image,
+  // Avatar,
+  // Space,
+  Spin,
+  Tag,
+  Alert,
+} from "antd";
 export default function App() {
   let subreddits = [];
   const [datos, setDatos] = useState(null);
@@ -30,7 +44,11 @@ export default function App() {
     <>
       <View style={styles.container}>
         <Text>Reddit Clone</Text>
-        {datos ? datos.map((item) => <p>{item.kind}</p>) : null}
+        <Row gutter={[16, 24]}>
+          {datos
+            ? datos.map((item) => <p key={item.data.id}>{item.data.id}</p>)
+            : null}
+        </Row>
         <StatusBar style="auto" />
       </View>
     </>
