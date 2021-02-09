@@ -54,7 +54,7 @@ export default function App() {
               <Card
                 hoverable
                 style={{ width: 250 }}
-                cover={<img alt="example" src={item.data.thumbnail} />}
+                cover={<img alt="image" src={item.data.url} />}
               >
                 <Meta
                   title="Europe Street beat"
