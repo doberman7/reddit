@@ -1,0 +1,12 @@
+{
+  "name": "reddit",
+  "displayName": "reddit",
+  "expo": {
+    "name": "reddit",
+    "slug": "reddit",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
