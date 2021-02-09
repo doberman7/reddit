@@ -26,12 +26,16 @@ export default function App() {
   }, []);
 
   console.log(datos);
-  return (
-    <View style={styles.container}>
-      <Text>Reddit Clone</Text>
-      {datos ? <p>{datos.length}</p> : null}
-      <StatusBar style="auto" />
-    </View>
+  return datos ? (
+    <>
+      <View style={styles.container}>
+        <Text>Reddit Clone</Text>
+        {datos ? datos.map((item) => <p>{item.kind}</p>) : null}
+        <StatusBar style="auto" />
+      </View>
+    </>
+  ) : (
+    <p>cargando..∫</p>
   );
 }
 
