@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 // import { StyleSheet, Text, View } from "react-native";
 import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
+import { Spin, Alert } from "antd";
+
 import Detail from "./Detail";
 export default function App() {
   const [datos, setDatos] = useState(null);
@@ -70,6 +72,12 @@ export default function App() {
       ,
     </>
   ) : (
-    <p>cargando..∫</p>
+    <Spin tip="Loading...">
+      <Alert
+        message="Alert message title"
+        description="Further details about the context of this alert."
+        type="info"
+      />
+    </Spin>
   );
 }
