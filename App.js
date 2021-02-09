@@ -25,8 +25,9 @@ export default function App() {
     };
     data();
   }, []);
+  const parrafo = { whiteSpace: "pre" };
 
-  console.log(datos);
+  // console.log(datos);
   return datos ? (
     <>
       <h1>Reddit Clone</h1>
@@ -39,7 +40,13 @@ export default function App() {
               avatar={
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               }
-              title={<a href="https://ant.design">{item.data.title}</a>}
+              title={
+                <>
+                  /r {item.data.subreddit}
+                  <br />
+                  <a href="https://ant.design">{item.data.title}</a>
+                </>
+              }
               key={item.data.id}
               description="Ant Design, a design language for background applications, is refined by Ant UED Team"
             />
