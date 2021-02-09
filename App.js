@@ -53,13 +53,8 @@ export default function App() {
             <div style={{ width: "50%", margin: "0 auto" }}>
               <Card
                 hoverable
-                style={{ width: 400 }}
-                cover={
-                  <img
-                    alt="example"
-                    src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                  />
-                }
+                style={{ width: 250 }}
+                cover={<img alt="example" src={item.data.thumbnail} />}
               >
                 <Meta
                   title="Europe Street beat"
