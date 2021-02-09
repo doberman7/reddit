@@ -37,9 +37,7 @@ export default function App() {
         renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
-              avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              }
+              avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
                   /r {item.data.subreddit}
