@@ -57,8 +57,8 @@ export default function App() {
             <div style={{ width: "50%", margin: "0 auto" }}>
               <Card
                 hoverable
-                style={{ width: 250 }}
-                cover={<img alt="image" src={item.data.url} />}
+                style={{ width: 200 }}
+                cover={<img alt="image not found" src={item.data.url} />}
               >
                 <Meta
                 // title="Europe Street beat"
@@ -74,8 +74,8 @@ export default function App() {
   ) : (
     <Spin tip="Loading...">
       <Alert
-        message="Alert message title"
-        description="Further details about the context of this alert."
+        message="One second"
+        description="Patience is not the ability to wait, but the ability to keep a good attitude while waiting."
         type="info"
       />
     </Spin>
