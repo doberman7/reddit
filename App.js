@@ -4,18 +4,16 @@ import { StyleSheet, Text, View } from "react-native";
 
 const data = async () => {
   try {
-    const response = await fetch(
-      "https://www.reddit.com/r/aww/comments/80o0xo/puppy_spends_a_day_at_the_beach.json"
-    );
+    const res = await fetch("https://www.reddit.com/r/all.json");
     //https://www.reddit.com/r/aww/comments/80o0xo/puppy_spends_a_day_at_the_beach/
-    const stuff = await response.json();
-    stuff.map((s) => {
-      const { data, kind } = s;
-      console.log(kind);
-      const { children } = data;
-      console.log(children);
+    const arayResponse = await res.json();
+    const { data } = arayResponse;
+    const { children } = data;
+    children.map((item) => {
+      console.log(item.data.subreddit);
     });
-    return stuff;
+
+    return arayResponse;
   } catch (e) {
     console.log(e);
   }
