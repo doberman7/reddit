@@ -8,7 +8,9 @@ const data = async () => {
     const stuff = await response.json();
     console.log(stuff);
     return stuff;
-  } catch (e) {}
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 data();
