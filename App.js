@@ -4,9 +4,10 @@ import { StyleSheet, Text, View } from "react-native";
 
 const data = async () => {
   try {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => console.log(json));
+    const response = await fetch("https://fakestoreapi.com/products");
+    const stuff = await response.json();
+    console.log(stuff);
+    return stuff;
   } catch (e) {}
 };
 
