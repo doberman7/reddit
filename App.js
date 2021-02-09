@@ -40,13 +40,20 @@ export default function App() {
               avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
-                  /r {item.data.subreddit}
-                  <br />
                   <a href="https://ant.design">{item.data.title}</a>
                 </>
               }
               key={item.data.id}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+              description={
+                <>
+                  /r {item.data.subreddit}
+                  <br />
+                  <p>
+                    posted by {item.data.author}, coments
+                    {" " + item.data.num_comments}
+                  </p>
+                </>
+              }
             />
             <div style={{ width: "50%", margin: "0 auto" }}>
               <Card
@@ -55,8 +62,8 @@ export default function App() {
                 cover={<img alt="image" src={item.data.url} />}
               >
                 <Meta
-                  title="Europe Street beat"
-                  description="www.instagram.com"
+                // title="Europe Street beat"
+                // description={<p>posted by {item.data.author}</p>}
                 />
               </Card>
             </div>
