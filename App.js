@@ -7,8 +7,9 @@ const data = async () => {
     const response = await fetch(
       "https://www.reddit.com/r/aww/comments/80o0xo/puppy_spends_a_day_at_the_beach.json"
     );
+    //https://www.reddit.com/r/aww/comments/80o0xo/puppy_spends_a_day_at_the_beach/
     const stuff = await response.json();
-    console.log(stuff);
+    stuff.map((s) => console.log(s.data));
     return stuff;
   } catch (e) {
     console.log(e);
