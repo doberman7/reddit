@@ -4,7 +4,9 @@ import { StyleSheet, Text, View } from "react-native";
 
 const data = async () => {
   try {
-    const response = await fetch("https://fakestoreapi.com/products");
+    const response = await fetch(
+      "https://www.reddit.com/r/aww/comments/80o0xo/puppy_spends_a_day_at_the_beach.json"
+    );
     const stuff = await response.json();
     console.log(stuff);
     return stuff;
