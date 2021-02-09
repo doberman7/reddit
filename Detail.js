@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 
-const Detail = () => {
-  const [count, setCount] = useState(0);
+const Detail = (props) => {
+  let num = { ...props };
+  const [count, setCount] = useState(num.ups);
 
   return (
     <div>

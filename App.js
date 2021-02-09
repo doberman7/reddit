@@ -48,7 +48,7 @@ export default function App() {
                     posted by {item.data.author}, coments
                     {" " + item.data.num_comments}
                   </p>
-                  <Detail />
+                  <Detail ups={item.data.ups} />
                 </>
               }
             />
