@@ -2,10 +2,11 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import "antd/dist/antd.css";
-import { List, Avatar } from "antd";
+import { List, Avatar, Card } from "antd";
 
 export default function App() {
   const [datos, setDatos] = useState(null);
+  const { Meta } = Card;
 
   useEffect(() => {
     const data = async () => {
@@ -25,14 +26,13 @@ export default function App() {
     };
     data();
   }, []);
-  const parrafo = { whiteSpace: "pre" };
 
   // console.log(datos);
   return datos ? (
     <>
       <h1>Reddit Clone</h1>
       <List
-        itemLayout="horizontal"
+        itemLayout="vertical"
         dataSource={datos}
         renderItem={(item) => (
           <List.Item>
@@ -50,6 +50,23 @@ export default function App() {
               key={item.data.id}
               description="Ant Design, a design language for background applications, is refined by Ant UED Team"
             />
+            <div style={{ width: "50%", margin: "0 auto" }}>
+              <Card
+                hoverable
+                style={{ width: 400 }}
+                cover={
+                  <img
+                    alt="example"
+                    src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                  />
+                }
+              >
+                <Meta
+                  title="Europe Street beat"
+                  description="www.instagram.com"
+                />
+              </Card>
+            </div>
           </List.Item>
         )}
       />
