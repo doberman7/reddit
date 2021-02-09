@@ -5,7 +5,7 @@ import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
 import { Spin, Alert } from "antd";
 
-import Detail from "./Detail";
+import Detail from "./Votes";
 export default function App() {
   const [datos, setDatos] = useState(null);
   const { Meta } = Card;
@@ -60,10 +60,10 @@ export default function App() {
                 style={{ width: 200 }}
                 cover={<img alt="image not found" src={item.data.url} />}
               >
-                <Meta
+                {/* <Meta
                 // title="Europe Street beat"
                 // description={<p>posted by {item.data.author}</p>}
-                />
+                /> */}
               </Card>
             </div>
           </List.Item>
