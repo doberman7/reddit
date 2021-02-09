@@ -1,23 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import {
-  Row,
-  Col,
-  Typography,
-  Card,
-  Button,
-  // Modal,
-  Divider,
-  Image,
-  // Avatar,
-  // Space,
-  Spin,
-  Tag,
-  Alert,
-} from "antd";
+import "antd/dist/antd.css";
+import { List, Avatar } from "antd";
+
 export default function App() {
-  let subreddits = [];
   const [datos, setDatos] = useState(null);
 
   useEffect(() => {
@@ -42,26 +29,26 @@ export default function App() {
   console.log(datos);
   return datos ? (
     <>
-      <View style={styles.container}>
-        <Text>Reddit Clone</Text>
-        <Row gutter={[16, 24]}>
-          {datos
-            ? datos.map((item) => <p key={item.data.id}>{item.data.id}</p>)
-            : null}
-        </Row>
-        <StatusBar style="auto" />
-      </View>
+      <h1>Reddit Clone</h1>
+      <List
+        itemLayout="horizontal"
+        dataSource={datos}
+        renderItem={(item) => (
+          <List.Item>
+            <List.Item.Meta
+              avatar={
+                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+              }
+              title={<a href="https://ant.design">{item.data.title}</a>}
+              key={item.data.id}
+              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+            />
+          </List.Item>
+        )}
+      />
+      ,
     </>
   ) : (
     <p>cargando..∫</p>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
