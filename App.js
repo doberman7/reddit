@@ -1,9 +1,9 @@
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+// import { StyleSheet, Text, View } from "react-native";
 import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
-
+import Detail from "./Detail";
 export default function App() {
   const [datos, setDatos] = useState(null);
   const { Meta } = Card;
@@ -16,10 +16,6 @@ export default function App() {
         const { data } = arayResponse;
         const { children } = data;
         setDatos(children);
-        // children.map((item) => {
-        //   // console.log(item.data);
-        //   subreddits.push(item.data);
-        // });
       } catch (e) {
         console.log(e);
       }
@@ -40,7 +36,7 @@ export default function App() {
               avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
-                  <a href="https://ant.design">{item.data.title}</a>
+                  <a href="">{item.data.title}</a>
                 </>
               }
               key={item.data.id}
@@ -52,6 +48,7 @@ export default function App() {
                     posted by {item.data.author}, coments
                     {" " + item.data.num_comments}
                   </p>
+                  <Detail />
                 </>
               }
             />
