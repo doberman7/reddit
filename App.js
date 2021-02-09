@@ -9,7 +9,12 @@ const data = async () => {
     );
     //https://www.reddit.com/r/aww/comments/80o0xo/puppy_spends_a_day_at_the_beach/
     const stuff = await response.json();
-    stuff.map((s) => console.log(s.data));
+    stuff.map((s) => {
+      const { data, kind } = s;
+      console.log(kind);
+      const { children } = data;
+      console.log(children);
+    });
     return stuff;
   } catch (e) {
     console.log(e);
