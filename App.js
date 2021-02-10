@@ -6,7 +6,7 @@ import { Text } from "react-native-elements";
 import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
 import { Spin, Alert } from "antd";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
 
 import Votes from "./Votes";
 import Detail from "./Detail";
@@ -76,8 +76,10 @@ export default function App() {
               description={
                 <>
                   {item.data.subreddit_name_prefixed}
-                  <br />
+                  {/* <br /> */}
+
                   <Text>
+                    {/* {"\n"} */}
                     posted by {item.data.author}, coments
                     {" " + item.data.num_comments}
                   </Text>
