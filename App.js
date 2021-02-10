@@ -86,16 +86,28 @@ export default function App() {
               }
             />
             <View style={styles.container}>
-              <Card
-                hoverable
-                style={{ width: 200 }}
-                cover={
-                  <img
-                    alt="image not found"
-                    src={item.data.url_overridden_by_dest}
-                  />
-                }
-              ></Card>
+              <Text onPress={showModal}>
+                <Card
+                  hoverable
+                  style={{ width: 200 }}
+                  cover={
+                    <img
+                      alt="image not found"
+                      src={item.data.url_overridden_by_dest}
+                    />
+                  }
+                ></Card>
+              </Text>
+              <Modal
+                title="Basic Modal"
+                visible={isModalVisible}
+                onOk={handleOk}
+                onCancel={handleCancel}
+              >
+                <Detail
+                  props={`https://www.reddit.com${item.data.permalink}.json`}
+                />
+              </Modal>
             </View>
           </List.Item>
         )}
