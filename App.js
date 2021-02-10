@@ -77,10 +77,10 @@ export default function App() {
                 <>
                   {item.data.subreddit_name_prefixed}
                   <br />
-                  <p>
+                  <Text>
                     posted by {item.data.author}, coments
                     {" " + item.data.num_comments}
-                  </p>
+                  </Text>
                   <Votes ups={item.data.ups} />
                 </>
               }
