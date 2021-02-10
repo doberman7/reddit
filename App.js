@@ -133,5 +133,4 @@ const styles = StyleSheet.create({
     justifyContent: "center" /* align horizontal */,
     alignItems: "center" /* align vertical */,
   },
-  // title: { fontWeight: "bold" },
 });

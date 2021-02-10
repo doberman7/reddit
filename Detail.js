@@ -11,16 +11,16 @@ const Detail = (props) => {
         const res = await fetch(comentUrl);
 
         const arayResponse = await res.json();
-        setDatos(arayResponse);
+
+        setDatos([...arayResponse]);
       } catch (e) {
         console.log(e);
       }
     };
     data();
   }, []);
-  console.log(datos);
   //this children its not the one above, but change the name breaks the fx
-  const ExampleComment = ({ children }) => (
+  const ExampleComment = ({ children, datos }) => (
     <Comment
       actions={[<span key="comment-nested-reply-to">Reply to</span>]}
       author={<a>Han Solo</a>}
@@ -34,22 +34,27 @@ const Detail = (props) => {
         <p>
           We supply a series of design principles, practical patterns and high
           quality design resources (Sketch and Axure).
+          {/* {typeof datos} */}
         </p>
       }
     >
       {children}
     </Comment>
   );
-
-  return (
+  //
+  if (datos) datos.map((item) => console.log(item.data.children));
+  return datos ? (
     <>
-      <ExampleComment>
+      {/* {datos ? console.log(typeof datos.data) : null} */}
+      {/* <ExampleComment datos={datos}>
         <ExampleComment>
           <ExampleComment />
           <ExampleComment />
         </ExampleComment>
-      </ExampleComment>
+      </ExampleComment> */}
     </>
+  ) : (
+    <p>cargando</p>
   );
 };
 
