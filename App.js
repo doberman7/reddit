@@ -1,6 +1,8 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "react-native-elements";
+
 import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
 import { Spin, Alert } from "antd";
@@ -42,7 +44,7 @@ export default function App() {
 
   return datos ? (
     <>
-      <h1>Reddit Clone</h1>
+      <Text h2>Reddit Clone</Text>
       <List
         itemLayout="vertical"
         dataSource={datos}
