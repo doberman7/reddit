@@ -57,7 +57,7 @@ export default function App() {
                   {/* <Button type="text" onClick={showModal}>
                     <h3>{item.data.title}</h3>
                   </Button>> */}
-                  <Text style={styles.title} onPress={showModal}>
+                  <Text style={{ fontWeight: "bold" }} onPress={showModal}>
                     {item.data.title}
                   </Text>
                   <Modal
@@ -133,5 +133,5 @@ const styles = StyleSheet.create({
     justifyContent: "center" /* align horizontal */,
     alignItems: "center" /* align vertical */,
   },
-  title: { fontWeight: "bold" },
+  // title: { fontWeight: "bold" },
 });
