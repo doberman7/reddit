@@ -25,7 +25,6 @@ export default function App() {
     data();
   }, []);
 
-  // console.log(datos);
   return datos ? (
     <>
       <h1>Reddit Clone</h1>
@@ -34,17 +33,18 @@ export default function App() {
         dataSource={datos}
         renderItem={(item) => (
           <List.Item>
+            {/* {console.log(item.data.preview.images[0].source.url)} */}
             <List.Item.Meta
               avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
-                  <a href="">{item.data.title}</a>
+                  <a href={`${item.data.url}+.json`}>{item.data.title}</a>
                 </>
               }
               key={item.data.id}
               description={
                 <>
-                  /r {item.data.subreddit}
+                  {item.data.subreddit_name_prefixed}
                   <br />
                   <p>
                     posted by {item.data.author}, coments
