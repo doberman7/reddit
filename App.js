@@ -31,6 +31,7 @@ export default function App() {
         const arayResponse = await res.json();
         const { data } = arayResponse;
         const { children } = data;
+        // console.log(children);
         setDatos(children);
       } catch (e) {
         console.log(e);
@@ -64,7 +65,7 @@ export default function App() {
                     onCancel={handleCancel}
                   >
                     <Detail
-                      props={`https://www.reddit.com${item.data.permalink}+.json`}
+                      props={`https://www.reddit.com${item.data.permalink}.json`}
                     />
                   </Modal>
 
