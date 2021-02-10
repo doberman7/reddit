@@ -4,11 +4,24 @@ import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
 import { Spin, Alert } from "antd";
+import { Modal, Button } from "antd";
 
 import Votes from "./Votes";
 export default function App() {
   const [datos, setDatos] = useState(null);
-  // const { Meta } = Card;
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   useEffect(() => {
     const data = async () => {
@@ -37,11 +50,24 @@ export default function App() {
               avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
-                  <a
+                  {/* <a
                     href={`https://www.reddit.com${item.data.permalink}+.json`}
+                  > */}
+                  <Button type="text" onClick={showModal}>
+                    <h3>{item.data.title}</h3>
+                  </Button>
+                  <Modal
+                    title="Basic Modal"
+                    visible={isModalVisible}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
                   >
-                    {item.data.title}
-                  </a>
+                    <p>Some contents...</p>
+                    <p>Some contents...</p>
+                    <p>Some contents...</p>
+                  </Modal>
+
+                  {/* </a> */}
                 </>
               }
               key={item.data.id}
