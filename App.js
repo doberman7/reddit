@@ -5,10 +5,10 @@ import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
 import { Spin, Alert } from "antd";
 
-import Detail from "./Votes";
+import Votes from "./Votes";
 export default function App() {
   const [datos, setDatos] = useState(null);
-  const { Meta } = Card;
+  // const { Meta } = Card;
 
   useEffect(() => {
     const data = async () => {
@@ -53,7 +53,7 @@ export default function App() {
                     posted by {item.data.author}, coments
                     {" " + item.data.num_comments}
                   </p>
-                  <Detail ups={item.data.ups} />
+                  <Votes ups={item.data.ups} />
                 </>
               }
             />

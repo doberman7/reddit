@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 
-const Detail = (props) => {
+const Votes = (props) => {
   let num = { ...props };
   const [count, setCount] = useState(num.ups);
 
@@ -20,4 +20,4 @@ const Detail = (props) => {
   );
 };
 
-export default Detail;
+export default Votes;
