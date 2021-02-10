@@ -52,12 +52,12 @@ export default function App() {
               avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
-                  {/* <a
-                    href={`https://www.reddit.com${item.data.permalink}+.json`}
-                  > */}
-                  <Button type="text" onClick={showModal}>
+                  {/* <Button type="text" onClick={showModal}>
                     <h3>{item.data.title}</h3>
-                  </Button>
+                  </Button>> */}
+                  <Text style={styles.title} onPress={showModal}>
+                    {item.data.title}
+                  </Text>
                   <Modal
                     title="Basic Modal"
                     visible={isModalVisible}
@@ -68,8 +68,6 @@ export default function App() {
                       props={`https://www.reddit.com${item.data.permalink}.json`}
                     />
                   </Modal>
-
-                  {/* </a> */}
                 </>
               }
               key={item.data.id}
@@ -119,4 +117,5 @@ const styles = StyleSheet.create({
     justifyContent: "center" /* align horizontal */,
     alignItems: "center" /* align vertical */,
   },
+  title: { fontWeight: "bold" },
 });
