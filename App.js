@@ -1,6 +1,6 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-// import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
 import { Spin, Alert } from "antd";
@@ -85,7 +85,7 @@ export default function App() {
                 </>
               }
             />
-            <div style={{ width: "50%", margin: "0 auto" }}>
+            <View style={styles.container}>
               <Card
                 hoverable
                 style={{ width: 200 }}
@@ -96,7 +96,7 @@ export default function App() {
                   />
                 }
               ></Card>
-            </div>
+            </View>
           </List.Item>
         )}
       />
@@ -112,3 +112,11 @@ export default function App() {
     </Spin>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    justifyContent: "center" /* align horizontal */,
+    alignItems: "center" /* align vertical */,
+  },
+});
