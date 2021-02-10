@@ -6,25 +6,14 @@ import { Text } from "react-native-elements";
 import "antd/dist/antd.css";
 import { List, Avatar, Card } from "antd";
 import { Spin, Alert } from "antd";
-import { Modal } from "antd";
 
 import Votes from "./Votes";
 import Detail from "./Detail";
+
+import { Link, useHistory } from "react-router-dom";
+
 export default function App() {
   const [datos, setDatos] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
 
   useEffect(() => {
     const data = async () => {
@@ -54,22 +43,9 @@ export default function App() {
               avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
-                  {/* <Button type="text" onClick={showModal}>
-                    <h3>{item.data.title}</h3>
-                  </Button>> */}
-                  <Text style={{ fontWeight: "bold" }} onPress={showModal}>
-                    {item.data.title}
-                  </Text>
-                  <Modal
-                    title="Basic Modal"
-                    visible={isModalVisible}
-                    onOk={handleOk}
-                    onCancel={handleCancel}
-                  >
-                    <Detail
-                      props={`https://www.reddit.com${item.data.permalink}.json`}
-                    />
-                  </Modal>
+                  {/* <Link to="/"> */}
+                  <Text style={{ fontWeight: "bold" }}>{item.data.title}</Text>
+                  {/* </Link> */}
                 </>
               }
               key={item.data.id}
@@ -88,28 +64,16 @@ export default function App() {
               }
             />
             <View style={styles.container}>
-              <Text onPress={showModal}>
-                <Card
-                  hoverable
-                  style={{ width: 200 }}
-                  cover={
-                    <img
-                      alt="image not found"
-                      src={item.data.url_overridden_by_dest}
-                    />
-                  }
-                ></Card>
-              </Text>
-              <Modal
-                title="Basic Modal"
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}
-              >
-                <Detail
-                  props={`https://www.reddit.com${item.data.permalink}.json`}
-                />
-              </Modal>
+              <Card
+                hoverable
+                style={{ width: 200 }}
+                cover={
+                  <img
+                    alt="image not found"
+                    src={item.data.url_overridden_by_dest}
+                  />
+                }
+              ></Card>
             </View>
           </List.Item>
         )}
@@ -134,3 +98,7 @@ const styles = StyleSheet.create({
     alignItems: "center" /* align vertical */,
   },
 });
+
+{
+  /* <Detail props={`https://www.reddit.com${item.data.permalink}.json`} />; */
+}
