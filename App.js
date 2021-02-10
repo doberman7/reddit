@@ -33,12 +33,15 @@ export default function App() {
         dataSource={datos}
         renderItem={(item) => (
           <List.Item>
-            {/* {console.log(item.data.preview.images[0].source.url)} */}
             <List.Item.Meta
               avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
-                  <a href={`${item.data.url}+.json`}>{item.data.title}</a>
+                  <a
+                    href={`https://www.reddit.com${item.data.permalink}+.json`}
+                  >
+                    {item.data.title}
+                  </a>
                 </>
               }
               key={item.data.id}
@@ -58,7 +61,12 @@ export default function App() {
               <Card
                 hoverable
                 style={{ width: 200 }}
-                cover={<img alt="image not found" src={item.data.url} />}
+                cover={
+                  <img
+                    alt="image not found"
+                    src={item.data.url_overridden_by_dest}
+                  />
+                }
               >
                 {/* <Meta
                 // title="Europe Street beat"
