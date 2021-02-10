@@ -7,6 +7,7 @@ import { Spin, Alert } from "antd";
 import { Modal, Button } from "antd";
 
 import Votes from "./Votes";
+import Detail from "./Detail";
 export default function App() {
   const [datos, setDatos] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -62,9 +63,9 @@ export default function App() {
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
+                    <Detail
+                      props={`https://www.reddit.com${item.data.permalink}+.json`}
+                    />
                   </Modal>
 
                   {/* </a> */}
@@ -93,12 +94,7 @@ export default function App() {
                     src={item.data.url_overridden_by_dest}
                   />
                 }
-              >
-                {/* <Meta
-                // title="Europe Street beat"
-                // description={<p>posted by {item.data.author}</p>}
-                /> */}
-              </Card>
+              ></Card>
             </div>
           </List.Item>
         )}
