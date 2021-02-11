@@ -56,6 +56,7 @@ const ComentList = (props) => {
                   {item.data.subreddit_name_prefixed}
 
                   <Text>
+                    {" "}
                     posted by {item.data.author}, coments
                     {" " + item.data.num_comments}
                   </Text>
