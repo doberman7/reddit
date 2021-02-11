@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Comment, Avatar, Image } from "antd";
-import { List } from "antd";
 
 const Detail = ({
   match: {
     params: { id },
   },
 }) => {
-  // props={`https://www.reddit.com${item.data.permalink}.json`}
   const [datos, setDatos] = useState(null);
 
   useEffect(() => {
@@ -23,10 +21,10 @@ const Detail = ({
     };
     data();
   }, []);
-  //this children its not the one above, but change the name breaks the fx
+  //this children its not the one inside datos[0].data.children... , but change the name breaks the fx
   const ExampleComment = ({ children, title, text, avatar }) => (
     <Comment
-      // actions={[<span key="comment-nested-reply-to">Reply to</span>]}
+      actions={[<span key="comment-nested-reply-to">Reply to</span>]}
       author={"Posted by " + title}
       avatar={<Avatar src={avatar} alt="image not found" />}
       content={text}
@@ -34,8 +32,7 @@ const Detail = ({
       {children}
     </Comment>
   );
-  //
-  // if (datos) datos.map((item) => console.log(item.data.children[0].data.title));
+
   return datos ? (
     <>
       <p>Datos</p>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Votes from "./Votes";
-import Detail from "./Detail";
 import { List, Avatar, Card } from "antd";
 import { StyleSheet, View } from "react-native";
 import { Text } from "react-native-elements";
@@ -44,9 +43,6 @@ const ComentList = (props) => {
                     <Text style={{ fontWeight: "bold" }}>
                       {item.data.title}
                     </Text>
-                    {/* <Detail
-                      
-                    /> */};
                   </Link>
                 </>
               }
