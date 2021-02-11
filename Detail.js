@@ -24,23 +24,12 @@ const Detail = ({
     data();
   }, []);
   //this children its not the one above, but change the name breaks the fx
-  const ExampleComment = ({ children, title }) => (
+  const ExampleComment = ({ children, title, text, avatar }) => (
     <Comment
       // actions={[<span key="comment-nested-reply-to">Reply to</span>]}
-      author={title}
-      avatar={
-        <Avatar
-          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          alt="Han Solo"
-        />
-      }
-      content={
-        <p>
-          We supply a series of design principles, practical patterns and high
-          quality design resources (Sketch and Axure).
-          {/* {typeof datos} */}
-        </p>
-      }
+      author={"Posted by " + title}
+      avatar={<Avatar src={avatar} alt="image not found" />}
+      content={text}
     >
       {children}
     </Comment>
@@ -52,8 +41,10 @@ const Detail = ({
       <p>Datos</p>
 
       <ExampleComment
-        title={datos[0].data.children[0].data.title}
+        title={datos[0].data.children[0].data.author}
         key={datos[0].data.children[0].data.id}
+        text={datos[0].data.children[0].data.title}
+        avatar={datos[0].data.children[0].data.thumbnail}
       >
         <Image width={200} src={datos[0].data.children[0].data.url} />
         <ExampleComment />
