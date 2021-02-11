@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Comment, Avatar } from "antd";
+import { List } from "antd";
 
 const Detail = ({
   match: {
@@ -13,7 +14,6 @@ const Detail = ({
     const data = async () => {
       try {
         const res = await fetch(`https://www.reddit.com/${id}.json`);
-        console.log(res);
         const arayResponse = await res.json();
 
         setDatos([...arayResponse]);
@@ -49,13 +49,29 @@ const Detail = ({
   if (datos) datos.map((item) => console.log(item.data.children));
   return datos ? (
     <>
-      {/* {datos ? console.log(typeof datos.data) : null} */}
-      <ExampleComment datos={datos}>
-        <ExampleComment>
-          <ExampleComment />
-          <ExampleComment />
-        </ExampleComment>
-      </ExampleComment>
+      <p>Datos</p>
+      <List
+        itemLayout="horizontal"
+        dataSource={datos}
+        renderItem={(item) => (
+          // {{item.data.children[0].data.title?}}
+
+          <List.Item>
+            <List.Item.Meta
+              avatar={
+                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+              }
+              title={
+                <a href="https://ant.design">
+                  {item.data.children[0].data.title}
+                </a>
+              }
+              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+            />
+          </List.Item>
+        )}
+      />
+      ,
     </>
   ) : (
     <p>cargando</p>
