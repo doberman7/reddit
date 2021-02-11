@@ -47,10 +47,7 @@ const Detail = ({
     <Comment
       actions={[
         <span key="comment-nested-reply-to">
-          <a href="#" onClick={() => setFlag(!flag)}>
-            Reply to
-          </a>
-          {flag ? <Reply a={flag} /> : <Imagen h={flag} />}
+          <Replys />
         </span>,
       ]}
       author={"Posted by " + title}
