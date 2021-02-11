@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Comment, Avatar, Image } from "antd";
 import Replys from "./Replys";
+import { Link } from "react-router-dom";
+import { HomeOutlined } from "@ant-design/icons";
 
 const Detail = ({
   match: {
@@ -63,7 +65,12 @@ const Detail = ({
 
   return datos ? (
     <>
-      <h4>Detail</h4>
+      <Link to={`/`}>
+        <HomeOutlined
+          style={{ fontSize: "16px", color: "#08c", size: "12px" }}
+        />
+      </Link>
+      <h4>Details</h4>
       <ExampleComment
         title={datos[0].data.children[0].data.author}
         key={datos[0].data.children[0].data.id}
