@@ -11,7 +11,7 @@ const Votes = (props) => {
       <button onClick={() => setCount(count + 1)}>
         <CaretUpOutlined />
       </button>
-      <p>Votes {count} </p>
+      <p>Karma {count} </p>
 
       <button onClick={() => setCount(count - 1)}>
         <CaretDownOutlined />

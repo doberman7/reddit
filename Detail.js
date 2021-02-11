@@ -65,6 +65,24 @@ const Detail = ({
       {children}
     </Comment>
   );
+  const ReplyComment = ({ children, title, text, avatar, votes }) => (
+    <Comment
+      actions={[
+        <span key="comment-nested-reply-to">
+          <a href="#" onClick={() => setFlag(!flag)}>
+            Reply to
+          </a>
+          <Votes ups={votes} />
+          {flag ? <Reply a={flag} /> : <Imagen h={flag} />}
+        </span>,
+      ]}
+      author={"Posted by " + title}
+      avatar={<Avatar src={avatar} alt="image not found" />}
+      content={text}
+    >
+      {children}
+    </Comment>
+  );
 
   return datos ? (
     <>
@@ -88,6 +106,7 @@ const Detail = ({
             key={item.data.id}
             text={item.data.body}
             avatar={item.data.thumbnail}
+            votes={item.data.ups}
           />
         ))}
       </ExampleComment>
