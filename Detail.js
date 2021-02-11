@@ -46,32 +46,16 @@ const Detail = ({
     </Comment>
   );
   //
-  if (datos) datos.map((item) => console.log(item.data.children));
+  // if (datos) datos.map((item) => console.log(item.data.children[0].data.title));
   return datos ? (
     <>
       <p>Datos</p>
-      <List
-        itemLayout="horizontal"
-        dataSource={datos}
-        renderItem={(item) => (
-          // {{item.data.children[0].data.title?}}
-
-          <List.Item>
-            <List.Item.Meta
-              avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              }
-              title={
-                <a href="https://ant.design">
-                  {item.data.children[0].data.title}
-                </a>
-              }
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            />
-          </List.Item>
-        )}
-      />
-      ,
+      {/* {datos.map((item) => (item.data.children[0].data.title ? true : null))} */}
+      {datos.map((item, i) => (
+        <p key={item.data.children[0].data.id}>
+          {item.data.children[0].data.title}
+        </p>
+      ))}
     </>
   ) : (
     <p>cargando</p>
