@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Comment, Avatar } from "antd";
 
-const Detail = (props) => {
-  const comentUrl = JSON.parse(JSON.stringify(props.props));
+const Detail = ({
+  match: {
+    params: { id },
+  },
+}) => {
+  // props={`https://www.reddit.com${item.data.permalink}.json`}
   const [datos, setDatos] = useState(null);
 
   useEffect(() => {
     const data = async () => {
       try {
-        const res = await fetch(comentUrl);
-
+        const res = await fetch(`https://www.reddit.com/${id}.json`);
+        console.log(res);
         const arayResponse = await res.json();
 
         setDatos([...arayResponse]);
@@ -46,12 +50,12 @@ const Detail = (props) => {
   return datos ? (
     <>
       {/* {datos ? console.log(typeof datos.data) : null} */}
-      {/* <ExampleComment datos={datos}>
+      <ExampleComment datos={datos}>
         <ExampleComment>
           <ExampleComment />
           <ExampleComment />
         </ExampleComment>
-      </ExampleComment> */}
+      </ExampleComment>
     </>
   ) : (
     <p>cargando</p>

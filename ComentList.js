@@ -37,10 +37,16 @@ const ComentList = (props) => {
               avatar={<Avatar src={item.data.thumbnail} />}
               title={
                 <>
-                  <Link to={`/detail/${item.data.id}`}>
+                  <Link
+                    to={`/detail/${item.data.id}`}
+                    // props={`https://www.reddit.com${item.data.permalink}.json`}
+                  >
                     <Text style={{ fontWeight: "bold" }}>
                       {item.data.title}
                     </Text>
+                    {/* <Detail
+                      
+                    /> */};
                   </Link>
                 </>
               }
@@ -91,7 +97,3 @@ const styles = StyleSheet.create({
   },
 });
 export default ComentList;
-
-{
-  /* <Detail props={`https://www.reddit.com${item.data.permalink}.json`} />; */
-}
