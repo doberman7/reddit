@@ -3,6 +3,8 @@ import { Comment, Avatar, Image } from "antd";
 import Replys from "./Replys";
 import { Link } from "react-router-dom";
 import { HomeOutlined } from "@ant-design/icons";
+import Likes from "./Likes";
+import Votes from "./Votes";
 
 const Detail = ({
   match: {
@@ -45,13 +47,14 @@ const Detail = ({
     );
   }
   //this children its not the one inside datos[0].data.children... , but change the name breaks the fx
-  const ExampleComment = ({ children, title, text, avatar }) => (
+  const ExampleComment = ({ children, title, text, avatar, votes }) => (
     <Comment
       actions={[
         <span key="comment-nested-reply-to">
           <a href="#" onClick={() => setFlag(!flag)}>
             Reply to
           </a>
+          <Votes ups={votes} />
           {flag ? <Reply a={flag} /> : <Imagen h={flag} />}
         </span>,
       ]}
@@ -76,6 +79,7 @@ const Detail = ({
         key={datos[0].data.children[0].data.id}
         text={datos[0].data.children[0].data.title}
         avatar={datos[0].data.children[0].data.thumbnail}
+        votes={datos[0].data.children[0].data.ups}
       >
         <Image width={200} src={datos[0].data.children[0].data.url} />
         {datos[1].data.children.map((item) => (
