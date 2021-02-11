@@ -47,7 +47,14 @@ const Detail = ({
         avatar={datos[0].data.children[0].data.thumbnail}
       >
         <Image width={200} src={datos[0].data.children[0].data.url} />
-        <ExampleComment />
+        {datos[1].data.children.map((item) => (
+          <ExampleComment
+            title={item.data.author}
+            key={item.data.id}
+            text={item.data.body}
+            avatar={item.data.thumbnail}
+          />
+        ))}
       </ExampleComment>
     </>
   ) : (
