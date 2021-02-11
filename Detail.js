@@ -50,12 +50,19 @@ const Detail = ({
   return datos ? (
     <>
       <p>Datos</p>
-      {/* {datos.map((item) => (item.data.children[0].data.title ? true : null))} */}
-      {datos.map((item, i) => (
+      {datos.map((item) =>
+        item.data.children[0].data.title ? (
+          <ExampleComment
+            author={item.data.children[0].data.title}
+            key={item.data.children[0].data.id}
+          />
+        ) : null
+      )}
+      {/* {datos.map((item, i) => (
         <p key={item.data.children[0].data.id}>
-          {item.data.children[0].data.title}
+          <ExampleComment author={item.data.children[0].data.title} />
         </p>
-      ))}
+      ))} */}
     </>
   ) : (
     <p>cargando</p>
