@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Comment, Avatar } from "antd";
+import { Comment, Avatar, Image } from "antd";
 import { List } from "antd";
 
 const Detail = ({
@@ -24,10 +24,10 @@ const Detail = ({
     data();
   }, []);
   //this children its not the one above, but change the name breaks the fx
-  const ExampleComment = ({ children, datos }) => (
+  const ExampleComment = ({ children, title }) => (
     <Comment
-      actions={[<span key="comment-nested-reply-to">Reply to</span>]}
-      author={<a>Han Solo</a>}
+      // actions={[<span key="comment-nested-reply-to">Reply to</span>]}
+      author={title}
       avatar={
         <Avatar
           src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
@@ -50,19 +50,14 @@ const Detail = ({
   return datos ? (
     <>
       <p>Datos</p>
-      {datos.map((item) =>
-        item.data.children[0].data.title ? (
-          <ExampleComment
-            author={item.data.children[0].data.title}
-            key={item.data.children[0].data.id}
-          />
-        ) : null
-      )}
-      {/* {datos.map((item, i) => (
-        <p key={item.data.children[0].data.id}>
-          <ExampleComment author={item.data.children[0].data.title} />
-        </p>
-      ))} */}
+
+      <ExampleComment
+        title={datos[0].data.children[0].data.title}
+        key={datos[0].data.children[0].data.id}
+      >
+        <Image width={200} src={datos[0].data.children[0].data.url} />
+        <ExampleComment />
+      </ExampleComment>
     </>
   ) : (
     <p>cargando</p>

@@ -1,0 +1,6 @@
+# reddit
+Clone app of reddit, uses reddit api to obtain a JSON response
+
+"npm i" to install dependencies and do a "npm run web" on terminal
+
+Uses AntD for components and Expo platform for web with JavaScript and React. 
