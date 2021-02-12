@@ -1,4 +1,4 @@
-import { Comment, Avatar, Form, Button, List, Input } from "antd";
+import { Comment, Form, Button, List, Input } from "antd";
 import moment from "moment";
 import React from "react";
 
@@ -78,12 +78,6 @@ class Replys extends React.Component {
       <>
         {comments.length > 0 && <CommentList comments={comments} />}
         <Comment
-          // avatar={
-          //   <Avatar
-          //     src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          //     alt="Han Solo"
-          //   />
-          // }
           content={
             <Editor
               onChange={this.handleChange}

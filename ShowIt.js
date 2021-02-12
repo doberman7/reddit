@@ -18,18 +18,14 @@ const ShowIt = () => {
   function Falso(props) {
     return (
       <div>
+        <div>
+          <a onClick={() => setFlag(!flag)}>Reply </a>
+        </div>
         <h2> {props.h}</h2>
       </div>
     );
   }
-  return (
-    <>
-      {flag ? <Verdadero a={flag} /> : <Falso h={flag} />}
-      <div>
-        <a onClick={() => setFlag(!flag)}>Reply </a>
-      </div>
-    </>
-  );
+  return <>{flag ? <Verdadero a={flag} /> : <Falso h={flag} />}</>;
 };
 
 export default ShowIt;
