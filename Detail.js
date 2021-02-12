@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Comment, Avatar, Image } from "antd";
-import Replys from "./Replys";
 import { Link } from "react-router-dom";
 import { HomeOutlined } from "@ant-design/icons";
 import ShowIt from "./ShowIt";
 import Votes from "./Votes";
+import { Spin, Alert } from "antd";
 
 const Detail = ({
   match: {
@@ -12,7 +12,6 @@ const Detail = ({
   },
 }) => {
   const [datos, setDatos] = useState(null);
-  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     const data = async () => {
@@ -28,35 +27,13 @@ const Detail = ({
     data();
   }, []);
 
-  // function Reply(props) {
-  //   return (
-  //     <div>
-  //       <h2>
-  //         {" "}
-  //         <Replys />
-  //         {props.a}
-  //       </h2>
-  //     </div>
-  //   );
-  // }
-  // function Imagen(props) {
-  //   return (
-  //     <div>
-  //       <h2> {props.h}</h2>
-  //     </div>
-  //   );
-  // }
   //this children its not the one inside datos[0].data.children... , but change the name breaks the fx
   const ExampleComment = ({ children, title, text, avatar, votes }) => (
     <Comment
       actions={[
         <span key="comment-nested-reply-to">
-          {/* <a href="#" onClick={() => setFlag(!flag)}>
-            Reply to
-          </a> */}
           <Votes ups={votes} />
           <ShowIt />
-          {/* {flag ? <Reply a={flag} /> : <Imagen h={flag} />} */}
         </span>,
       ]}
       author={"Posted by " + title}
@@ -95,7 +72,13 @@ const Detail = ({
       </ExampleComment>
     </>
   ) : (
-    <p>cargando</p>
+    <Spin tip="Loading...">
+      <Alert
+        message="One second"
+        description="Patience is not the ability to wait, but the ability to keep a good attitude while waiting."
+        type="info"
+      />
+    </Spin>
   );
 };
 
