@@ -1,4 +1,4 @@
-import { Comment, Form, Button, List, Input } from "antd";
+import { Comment, Avatar, Form, Button, List, Input } from "antd";
 import moment from "moment";
 import React from "react";
 
@@ -54,9 +54,9 @@ class Replys extends React.Component {
         comments: [
           ...this.state.comments,
           {
-            author: "Han Solo",
-            // avatar:
-            //   "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            author: "Beatiful Calamardo",
+            avatar:
+              "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.96FYSKOBlh2EyVJa6RGWCAHaGl%26pid%3DApi&f=1",
             content: <p>{this.state.value}</p>,
             datetime: moment().fromNow(),
           },
@@ -78,6 +78,12 @@ class Replys extends React.Component {
       <>
         {comments.length > 0 && <CommentList comments={comments} />}
         <Comment
+          avatar={
+            <Avatar
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.96FYSKOBlh2EyVJa6RGWCAHaGl%26pid%3DApi&f=1"
+              alt="Han Solo"
+            />
+          }
           content={
             <Editor
               onChange={this.handleChange}
