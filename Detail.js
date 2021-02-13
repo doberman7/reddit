@@ -12,21 +12,27 @@ const Detail = ({
   },
 }) => {
   const [datos, setDatos] = useState(null);
+  const [fotos, setFotos] = useState(null);
 
   useEffect(() => {
     const data = async () => {
       try {
         const res = await fetch(`https://www.reddit.com/${id}.json`);
+
+        const resPics = await fetch(`https://randomuser.me/api/?results=50`);
+
         const arayResponse = await res.json();
+        const pics = await resPics.json();
 
         setDatos([...arayResponse]);
+        setFotos(pics);
       } catch (e) {
         console.log(e);
       }
     };
     data();
   }, []);
-
+  console.log(fotos);
   //this children its not the one inside datos[0].data.children... , but change the name breaks the fx
   const ExampleComment = ({ children, title, text, avatar, votes }) => (
     <Comment
