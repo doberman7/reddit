@@ -4,16 +4,26 @@ import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 
 const Votes = (props) => {
   let num = { ...props };
-  const [count, setCount] = useState(num.ups);
+  const originalKarma = num.ups;
+  const [karma, setKarma] = useState(num.ups);
+
+  const plusKarma = () => {
+    //sumarle solo un punto al karma
+    karma >= originalKarma + 1 ? karma : setKarma(karma + 1);
+  };
+  const lessKarma = () => {
+    //restarle solo un punto al karma
+    karma <= originalKarma - 1 ? karma : setKarma(karma - 1);
+  };
 
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>
+      <button onClick={plusKarma}>
         <CaretUpOutlined />
       </button>
-      <p>Karma {count} </p>
+      <p>Karma {karma} </p>
 
-      <button onClick={() => setCount(count - 1)}>
+      <button onClick={lessKarma}>
         <CaretDownOutlined />
       </button>
     </div>
