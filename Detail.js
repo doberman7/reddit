@@ -78,7 +78,22 @@ const Detail = ({
             text={item.data.body}
             avatar={handleFotos()}
             votes={item.data.ups}
-          />
+          >
+            {" "}
+            {item.data.replies
+              ? item.data.replies.data.children.map((item) =>
+                  item.data.body ? (
+                    <ExampleComment
+                      title={item.data.author}
+                      key={item.data.id}
+                      text={item.data.body}
+                      avatar={handleFotos()}
+                      votes={item.data.ups}
+                    ></ExampleComment>
+                  ) : null
+                )
+              : null}
+          </ExampleComment>
         ))}
       </ExampleComment>
     </>
