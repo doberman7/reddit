@@ -32,7 +32,6 @@ const Detail = ({
     };
     data();
   }, []);
-  console.log(fotos);
   //this children its not the one inside datos[0].data.children... , but change the name breaks the fx
   const ExampleComment = ({ children, title, text, avatar, votes }) => (
     <Comment
@@ -49,6 +48,12 @@ const Detail = ({
       {children}
     </Comment>
   );
+
+  const handleFotos = () => {
+    let num = Math.floor(Math.random() * (50 - 1)) + 1;
+
+    if (fotos) return fotos.results[num].picture.thumbnail;
+  };
 
   return datos ? (
     <>
@@ -71,7 +76,7 @@ const Detail = ({
             title={item.data.author}
             key={item.data.id}
             text={item.data.body}
-            avatar={item.data.thumbnail}
+            avatar={handleFotos()}
             votes={item.data.ups}
           />
         ))}
