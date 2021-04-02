@@ -60,9 +60,9 @@ const Detail = ({
       <div style={{ padding: "10px" }}>
         <Link to={`/`}>
           <HomeOutlined
-            style={{ fontSize: "26px", color: "#08c", padding: "5px" }}
+            style={{ fontSize: "20px", color: "#08c", padding: "5px" }}
           />
-          <p>Home</p>
+          <p style={{ fontSize: "10px" }}>Home</p>
         </Link>
       </div>
       <ExampleComment
