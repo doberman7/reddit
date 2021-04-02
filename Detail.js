@@ -57,12 +57,14 @@ const Detail = ({
 
   return datos ? (
     <>
-      <Link to={`/`}>
-        <HomeOutlined
-          style={{ fontSize: "16px", color: "#08c", size: "12px" }}
-        />
-      </Link>
-      <h4>Details</h4>
+      <div style={{ padding: "10px" }}>
+        <Link to={`/`}>
+          <HomeOutlined
+            style={{ fontSize: "26px", color: "#08c", padding: "5px" }}
+          />
+          <p>Home</p>
+        </Link>
+      </div>
       <ExampleComment
         title={datos[0].data.children[0].data.author}
         key={datos[0].data.children[0].data.id}
