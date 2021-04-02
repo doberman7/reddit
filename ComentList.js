@@ -5,6 +5,7 @@ import { StyleSheet, View } from "react-native";
 import { Text } from "react-native-elements";
 import { Spin, Alert } from "antd";
 import { Link } from "react-router-dom";
+import Anime from "@mollycule/react-anime";
 
 const ComentList = (props) => {
   const [datos, setDatos] = useState(null);
@@ -27,56 +28,67 @@ const ComentList = (props) => {
   // if (datos) datos.map((d) => console.log(d.data.id));
   return datos ? (
     <>
-      <List
-        itemLayout="vertical"
-        dataSource={datos}
-        renderItem={(item) => (
-          <List.Item>
-            <List.Item.Meta
-              avatar={<Avatar src={item.data.thumbnail} />}
-              title={
-                <>
-                  <Link
-                    to={`/detail/${item.data.id}`}
-                    // props={`https://www.reddit.com${item.data.permalink}.json`}
-                  >
-                    <Text style={{ fontWeight: "bold" }}>
-                      {item.data.title}
-                    </Text>
-                  </Link>
-                </>
-              }
-              key={item.data.id}
-              description={
-                <>
-                  {item.data.subreddit_name_prefixed}
-
-                  <Text>
-                    {" "}
-                    posted by {item.data.author}, coments
-                    {" " + item.data.num_comments}
-                  </Text>
-                  <Votes ups={item.data.ups} />
-                </>
-              }
-            />
-            <View style={styles.container}>
-              <Link to={`/detail/${item.data.id}`}>
-                <Card
-                  hoverable
-                  style={{ width: 200 }}
-                  cover={
-                    <img
-                      alt="image not found"
-                      src={item.data.url_overridden_by_dest}
-                    />
+      <Anime
+        in
+        appear
+        duration={1000}
+        onEntering={{ translateY: [-20, 0], opacity: [0, 1] }}
+        onExiting={{ translateY: -20, opacity: 0 }}
+        easing="easeOutCubic"
+      >
+        <section>
+          <List
+            itemLayout="vertical"
+            dataSource={datos}
+            renderItem={(item) => (
+              <List.Item>
+                <List.Item.Meta
+                  avatar={<Avatar src={item.data.thumbnail} />}
+                  title={
+                    <>
+                      <Link
+                        to={`/detail/${item.data.id}`}
+                        // props={`https://www.reddit.com${item.data.permalink}.json`}
+                      >
+                        <Text style={{ fontWeight: "bold" }}>
+                          {item.data.title}
+                        </Text>
+                      </Link>
+                    </>
                   }
-                ></Card>
-              </Link>
-            </View>
-          </List.Item>
-        )}
-      />
+                  key={item.data.id}
+                  description={
+                    <>
+                      {item.data.subreddit_name_prefixed}
+
+                      <Text>
+                        {" "}
+                        posted by {item.data.author}, coments
+                        {" " + item.data.num_comments}
+                      </Text>
+                      <Votes ups={item.data.ups} />
+                    </>
+                  }
+                />
+                <View style={styles.container}>
+                  <Link to={`/detail/${item.data.id}`}>
+                    <Card
+                      hoverable
+                      style={{ width: 200 }}
+                      cover={
+                        <img
+                          alt="image not found"
+                          src={item.data.url_overridden_by_dest}
+                        />
+                      }
+                    ></Card>
+                  </Link>
+                </View>
+              </List.Item>
+            )}
+          />
+        </section>
+      </Anime>
     </>
   ) : (
     <Spin tip="Loading...">
