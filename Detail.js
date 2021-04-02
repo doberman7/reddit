@@ -5,7 +5,7 @@ import { HomeOutlined } from "@ant-design/icons";
 import ShowIt from "./ShowIt";
 import Votes from "./Votes";
 import { Spin, Alert } from "antd";
-
+import Anime from "@mollycule/react-anime";
 const Detail = ({
   match: {
     params: { id },
@@ -57,47 +57,58 @@ const Detail = ({
 
   return datos ? (
     <>
-      <div style={{ padding: "10px" }}>
-        <Link to={`/`}>
-          <HomeOutlined
-            style={{ fontSize: "20px", color: "#08c", padding: "5px" }}
-          />
-          <p style={{ fontSize: "10px" }}>Home</p>
-        </Link>
-      </div>
-      <ExampleComment
-        title={datos[0].data.children[0].data.author}
-        key={datos[0].data.children[0].data.id}
-        text={datos[0].data.children[0].data.title}
-        avatar={datos[0].data.children[0].data.thumbnail}
-        votes={datos[0].data.children[0].data.ups}
+      <Anime
+        in
+        appear
+        duration={1000}
+        onEntering={{ translateY: [-20, 0], opacity: [0, 1] }}
+        onExiting={{ translateY: -20, opacity: 0 }}
+        easing="easeOutCubic"
       >
-        <Image width={200} src={datos[0].data.children[0].data.url} />
-        {datos[1].data.children.map((item) => (
+        <section>
+          <div style={{ padding: "10px" }}>
+            <Link to={`/`}>
+              <HomeOutlined
+                style={{ fontSize: "20px", color: "#08c", padding: "5px" }}
+              />
+              <p style={{ fontSize: "10px" }}>Home</p>
+            </Link>
+          </div>
           <ExampleComment
-            title={item.data.author}
-            key={item.data.id}
-            text={item.data.body}
-            avatar={handleFotos()}
-            votes={item.data.ups}
+            title={datos[0].data.children[0].data.author}
+            key={datos[0].data.children[0].data.id}
+            text={datos[0].data.children[0].data.title}
+            avatar={datos[0].data.children[0].data.thumbnail}
+            votes={datos[0].data.children[0].data.ups}
           >
-            {" "}
-            {item.data.replies
-              ? item.data.replies.data.children.map((item) =>
-                  item.data.body ? (
-                    <ExampleComment
-                      title={item.data.author}
-                      key={item.data.id}
-                      text={item.data.body}
-                      avatar={handleFotos()}
-                      votes={item.data.ups}
-                    ></ExampleComment>
-                  ) : null
-                )
-              : null}
+            <Image width={200} src={datos[0].data.children[0].data.url} />
+            {datos[1].data.children.map((item) => (
+              <ExampleComment
+                title={item.data.author}
+                key={item.data.id}
+                text={item.data.body}
+                avatar={handleFotos()}
+                votes={item.data.ups}
+              >
+                {" "}
+                {item.data.replies
+                  ? item.data.replies.data.children.map((item) =>
+                      item.data.body ? (
+                        <ExampleComment
+                          title={item.data.author}
+                          key={item.data.id}
+                          text={item.data.body}
+                          avatar={handleFotos()}
+                          votes={item.data.ups}
+                        ></ExampleComment>
+                      ) : null
+                    )
+                  : null}
+              </ExampleComment>
+            ))}
           </ExampleComment>
-        ))}
-      </ExampleComment>
+        </section>
+      </Anime>
     </>
   ) : (
     <Spin tip="Loading...">
