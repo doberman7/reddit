@@ -19,7 +19,16 @@ export default function App() {
         easing="easeOutCubic"
       >
         <section>
-          <Text h2>Reddit Clone</Text>
+          <Text
+            style={{
+              fontWeight: "200",
+              fontSize: "2.8em",
+              textTransform: "uppercase",
+              letterSpacing: "0.3em",
+            }}
+          >
+            Reddit Clone
+          </Text>
         </section>
       </Anime>
       <ComentList />
