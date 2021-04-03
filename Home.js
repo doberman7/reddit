@@ -2,7 +2,7 @@
 import React from "react";
 import { Text } from "react-native-elements";
 import Anime from "@mollycule/react-anime";
-import Cat from "./Cat";
+import RedditIcon from "./RedditIcon";
 import "antd/dist/antd.css";
 
 import ComentList from "./ComentList";
@@ -19,19 +19,18 @@ export default function App() {
         easing="easeOutCubic"
       >
         <section style={{ display: "flex" }}>
-          <Cat />
-          <div>
-            <Text
-              style={{
-                fontWeight: "200",
-                fontSize: "2.8em",
-                textTransform: "uppercase",
-                letterSpacing: "0.3em",
-              }}
-            >
-              Reddit Clone
-            </Text>
-          </div>
+          <RedditIcon />
+          <Text
+            style={{
+              fontWeight: "200",
+              fontSize: "2.8em",
+              textTransform: "uppercase",
+              letterSpacing: "0.3em",
+              padding: ".5em",
+            }}
+          >
+            Reddit Clone
+          </Text>
         </section>
       </Anime>
       <ComentList />
